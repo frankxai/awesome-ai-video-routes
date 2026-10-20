@@ -1,0 +1,34 @@
+{
+  "verifiedOn": "2026-10-20",
+  "categories": {
+    "awesome-lists": "Other curated lists. Use them for depth; this repo routes you to the right one.",
+    "prompts": "Prompt libraries and galleries with real outputs.",
+    "guides": "Prompting and production guides, official first.",
+    "agent-skills": "Installable skills that teach a coding agent to make or edit video.",
+    "research": "Papers and model surveys."
+  },
+  "resources": [
+    { "category": "awesome-lists", "name": "zhuyansen/awesome-claude-video-skills", "url": "https://github.com/zhuyansen/awesome-claude-video-skills", "why": "The largest list of video skills for Claude Code and Codex, with 16 skills run end to end against one brief." },
+    { "category": "awesome-lists", "name": "Anil-matcha/awesome-ai-video-models", "url": "https://github.com/Anil-matcha/awesome-ai-video-models", "why": "Model-by-model comparison of APIs, price per second, speed and resolution. Maintained by an aggregator vendor." },
+    { "category": "awesome-lists", "name": "bestaidrama/awesome-ai-video-generators", "url": "https://github.com/bestaidrama/awesome-ai-video-generators", "why": "One line per generator plus the open-weight models behind them." },
+    { "category": "awesome-lists", "name": "bestaidrama/awesome-ai-video-benchmarks-and-reviews", "url": "https://github.com/bestaidrama/awesome-ai-video-benchmarks-and-reviews", "why": "Where to check what a tool actually does: leaderboards, benchmarks, hands-on roundups." },
+    { "category": "awesome-lists", "name": "ScreenKite/awesome-ai-video-editing", "url": "https://github.com/ScreenKite/awesome-ai-video-editing", "why": "Editing tools: cutting, captions, reframing." },
+    { "category": "awesome-lists", "name": "frankxai/awesome-motion-design-agent-skills", "url": "https://github.com/frankxai/awesome-motion-design-agent-skills", "why": "Sister list for code-driven motion: GSAP, Motion, Remotion, Lottie, Rive." },
+    { "category": "prompts", "name": "cclank/lanshu-awesome-ai-video-kit", "url": "https://github.com/cclank/lanshu-awesome-ai-video-kit", "why": "About 600 prompts across 24 models, 7 Claude skills, and a weekly check of official endpoints. Chinese first, English README available." },
+    { "category": "prompts", "name": "geekjourneyx/awesome-ai-video-prompts", "url": "https://github.com/geekjourneyx/awesome-ai-video-prompts", "why": "Prompt structure, cinematic language and audio sync, grouped by technique." },
+    { "category": "prompts", "name": "renoise-ai/awesome-seedance-prompts", "url": "https://github.com/renoise-ai/awesome-seedance-prompts", "why": "290+ Seedance 2.0 prompts, CC-BY-4.0." },
+    { "category": "prompts", "name": "HuyLe82US/awesome-seedance-prompts", "url": "https://github.com/HuyLe82US/awesome-seedance-prompts", "why": "Seedance 2.0 prompt vault with templates." },
+    { "category": "prompts", "name": "UlazAI prompt directory", "url": "https://ulazai.com/directory/", "why": "Browsable community prompts for Seedance, Veo, Kling, Wan and Hailuo. Each prompt links to the vendor's generator." },
+    { "category": "guides", "name": "Google Cloud: The ultimate prompting guide for Veo 3.1", "url": "https://cloud.google.com/blog/products/ai-machine-learning/ultimate-prompting-guide-for-veo-3-1", "why": "Official. Shot, subject, action, setting, light, style and audio, with examples." },
+    { "category": "guides", "name": "Claude Motion help article", "url": "https://support.claude.com/en/articles/17454997", "why": "Official. Plans, export and editing for Claude's own animation feature." },
+    { "category": "guides", "name": "Remotion docs", "url": "https://www.remotion.dev/docs", "why": "Official. Compositions, rendering, Lambda, licence." },
+    { "category": "agent-skills", "name": "heygen-com/hyperframes", "url": "https://github.com/heygen-com/hyperframes", "why": "Write HTML, render video. Ships its own agent skills." },
+    { "category": "agent-skills", "name": "remotion-dev/skills", "url": "https://github.com/remotion-dev/skills", "why": "Remotion's own agent skills." },
+    { "category": "agent-skills", "name": "nexu-io/html-video", "url": "https://github.com/nexu-io/html-video", "why": "HTML, CSS and data to MP4 on your laptop." },
+    { "category": "agent-skills", "name": "nateherkai/herk-edit-kit", "url": "https://github.com/nateherkai/herk-edit-kit", "why": "15 skills for editing reels and Shorts with Claude Code or Codex." },
+    { "category": "agent-skills", "name": "pireel/pireel", "url": "https://github.com/pireel/pireel", "why": "Open-source editor any agent can drive over MCP. AGPL-3.0." },
+    { "category": "agent-skills", "name": "latent-spaces/brag", "url": "https://github.com/latent-spaces/brag", "why": "Turns a finished project into a launch video in one command." },
+    { "category": "research", "name": "showlab/Awesome-Video-Diffusion", "url": "https://github.com/showlab/Awesome-Video-Diffusion", "why": "The reference list of video diffusion papers." },
+    { "category": "research", "name": "AlonzoLeeeooo/awesome-video-generation", "url": "https://github.com/AlonzoLeeeooo/awesome-video-generation", "why": "Video generation studies by task." }
+  ]
+}
