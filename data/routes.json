@@ -1,0 +1,919 @@
+{
+  "verifiedOn": "2026-10-20",
+  "families": {
+    "native": "Claude makes it with no third-party account: the output is code, rendered by Claude or by a free local tool.",
+    "connector": "Claude calls a hosted service through an MCP connector. The service generates or edits and bills its own credits.",
+    "api": "Claude Code writes the call to a model's API. You hold the key and pay per second of output.",
+    "app": "No integration with Claude is established. Claude writes the shot brief and you run it in the app.",
+    "local": "Open-weight models you run yourself, on your own GPU or a rented one.",
+    "pipeline": "Open-source end-to-end kits that chain script, voice, footage, captions and render.",
+    "distribution": "Getting the finished file onto a channel. Every publish is a human decision."
+  },
+  "evidenceLevels": {
+    "documented": "Read on the provider's own page on checkedOn.",
+    "third-party": "Reported by a third-party guide or tracker; not confirmed on the provider's page.",
+    "unverified": "The provider's page could not be read on checkedOn; listed from the provider's homepage or reputation.",
+    "tested": "Run end to end by a maintainer; the test is linked in notes."
+  },
+  "routes": [
+    {
+      "id": "claude-motion",
+      "family": "native",
+      "name": "Claude Motion",
+      "operations": [
+        "motion-graphics"
+      ],
+      "makes": [
+        "explainer",
+        "animated-chart",
+        "product-walkthrough"
+      ],
+      "notFor": [
+        "realistic-footage",
+        "people"
+      ],
+      "howFromClaude": "In claude.ai, ask for a Motion animation, edit it in chat or in the editor, then Export > MP4.",
+      "access": "Beta on Team and Enterprise plans. On by default for Team; Enterprise owners turn it on under Organization settings > Artifacts.",
+      "cost": "Counts against the plan's usage limits; longer animations use more.",
+      "exactText": true,
+      "reproducible": true,
+      "status": "beta",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://support.claude.com/en/articles/17454997",
+      "notes": "Built as code from the Motion template, so a word or a number can change without regenerating the rest. Resolution and maximum length are not published."
+    },
+    {
+      "id": "artifact-html-motion",
+      "family": "native",
+      "name": "Artifacts: animated HTML pages",
+      "operations": [
+        "motion-graphics"
+      ],
+      "makes": [
+        "explainer",
+        "animated-chart",
+        "interactive-demo",
+        "loop"
+      ],
+      "notFor": [
+        "realistic-footage"
+      ],
+      "howFromClaude": "Ask for an HTML artifact animated with CSS or GSAP. Render it to MP4 with HyperFrames, or capture it with a screen recorder.",
+      "access": "Free, Pro, Max, Team and Enterprise all include artifacts.",
+      "cost": "Plan usage only.",
+      "exactText": true,
+      "reproducible": true,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them",
+      "notes": "The page is the source and the video is a render of it. The route for anyone without Team or Enterprise."
+    },
+    {
+      "id": "hyperframes-local",
+      "family": "native",
+      "name": "Claude Code + HyperFrames",
+      "operations": [
+        "motion-graphics",
+        "compose"
+      ],
+      "makes": [
+        "explainer",
+        "social-short",
+        "launch-video",
+        "captions",
+        "data-story"
+      ],
+      "notFor": [
+        "realistic-footage"
+      ],
+      "howFromClaude": "npx skills add heygen-com/hyperframes, then /hyperframes to compose and /hyperframes-cli to lint, preview and render.",
+      "access": "Free, Apache-2.0, runs locally.",
+      "cost": "Local render time.",
+      "exactText": true,
+      "reproducible": true,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "notes": "Plain HTML is the easiest format for an agent to write. In zhuyansen/awesome-claude-video-skills' test of 16 skills, it took 23.5 minutes on a 15-second brief, the slowest."
+    },
+    {
+      "id": "remotion-local",
+      "family": "native",
+      "name": "Claude Code + Remotion",
+      "operations": [
+        "motion-graphics",
+        "compose"
+      ],
+      "makes": [
+        "explainer",
+        "social-short",
+        "data-driven-batch",
+        "captions",
+        "templated-series"
+      ],
+      "notFor": [
+        "realistic-footage"
+      ],
+      "howFromClaude": "Install remotion-dev/skills, scaffold with npx create-video@latest, render with npx remotion render or on Remotion Lambda.",
+      "access": "Free for individuals and for-profit companies with up to 3 employees; larger for-profits need a Remotion company licence.",
+      "cost": "Local render, or AWS Lambda per render.",
+      "exactText": true,
+      "reproducible": true,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/remotion-dev/skills",
+      "notes": "React components with props, so one template renders many personalised versions. Licence: remotion-dev/remotion LICENSE.md."
+    },
+    {
+      "id": "manim-motion-canvas",
+      "family": "native",
+      "name": "Claude Code + Manim or Motion Canvas",
+      "operations": [
+        "motion-graphics"
+      ],
+      "makes": [
+        "math-explainer",
+        "diagram-animation",
+        "code-walkthrough"
+      ],
+      "notFor": [
+        "realistic-footage"
+      ],
+      "howFromClaude": "Ask Claude Code for a Manim scene in Python or a Motion Canvas scene in TypeScript and render it locally.",
+      "access": "Free, MIT.",
+      "cost": "Local render time.",
+      "exactText": true,
+      "reproducible": true,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/ManimCommunity/manim",
+      "notes": "Manim Community is the maintained fork of 3b1b/manim. Motion Canvas: github.com/motion-canvas/motion-canvas."
+    },
+    {
+      "id": "edit-existing-footage",
+      "family": "native",
+      "name": "Claude Code + FFmpeg, auto-editor, WhisperX",
+      "operations": [
+        "edit"
+      ],
+      "makes": [
+        "cut-down",
+        "silence-removal",
+        "captions",
+        "reframe-vertical",
+        "clips-from-long-video"
+      ],
+      "notFor": [
+        "new-footage",
+        "dubbing",
+        "generative-changes"
+      ],
+      "howFromClaude": "Point Claude Code at the files. WhisperX transcribes with word timings, auto-editor removes silences, FFmpeg trims, reframes and burns captions.",
+      "access": "Free and local.",
+      "cost": "Local CPU or GPU time.",
+      "exactText": true,
+      "reproducible": true,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/WyattBlue/auto-editor",
+      "notes": "Cutting and captioning only. For transcript-based editing in an app use Descript; for dubbing use ElevenLabs. Kits that wrap this route: nateherkai/herk-edit-kit, pireel/pireel (AGPL-3.0)."
+    },
+    {
+      "id": "screen-demo",
+      "family": "native",
+      "name": "Product demo from the running app",
+      "operations": [
+        "record"
+      ],
+      "makes": [
+        "product-demo",
+        "launch-video",
+        "gif"
+      ],
+      "notFor": [
+        "realistic-footage"
+      ],
+      "howFromClaude": "Claude in Chrome records short browser flows; latent-spaces/brag turns a finished project into a launch video in one command.",
+      "access": "Claude in Chrome needs a paid plan (Pro, Max, Team or Enterprise). brag is MIT.",
+      "cost": "Plan usage only.",
+      "exactText": true,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/latent-spaces/brag",
+      "notes": "Real UI earns more trust than generated UI. Record first, then add titles in code."
+    },
+    {
+      "id": "higgsfield-mcp",
+      "family": "connector",
+      "name": "Higgsfield MCP",
+      "operations": [
+        "generate-footage"
+      ],
+      "makes": [
+        "realistic-footage",
+        "cinematic-shot",
+        "image-to-video",
+        "ad-creative"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Add the connector at mcp.higgsfield.ai and approve it once; Claude picks a model and submits each generation.",
+      "access": "Higgsfield account. Higgsfield's own post lists Veo 3.1, Kling 3.0, Seedance 2.0, Wan and MiniMax Hailuo, up to 4K and about 15 seconds per clip.",
+      "cost": "Higgsfield credits, billed separately from Claude.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://higgsfield.ai/blog/Generate-AI-Videos-From-Claude-with-Higgsfield-MCP",
+      "notes": "One connector reaching many frontier models. The model list is Higgsfield's own claim; it may lag model shutdowns such as Veo 3.1 on the Gemini API."
+    },
+    {
+      "id": "heygen-mcp",
+      "family": "connector",
+      "name": "HeyGen MCP (avatars) and HyperFrames hosted MCP",
+      "operations": [
+        "presenter",
+        "compose"
+      ],
+      "makes": [
+        "talking-head",
+        "avatar-explainer",
+        "hosted-html-video"
+      ],
+      "notFor": [
+        "cinematic-footage"
+      ],
+      "howFromClaude": "Avatar videos through the HeyGen connector. The hosted HyperFrames MCP composes and renders from claude.ai; from Claude Code its compose and render tools are disabled, so use the local skill.",
+      "access": "HeyGen account; check the current plan limits on HeyGen's pricing page.",
+      "cost": "HeyGen plan or credits.",
+      "exactText": true,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://www.heygen.com/blog/generate-ai-videos-with-claude",
+      "notes": "Any avatar of a real person needs that person's consent."
+    },
+    {
+      "id": "elevenlabs-mcp",
+      "family": "connector",
+      "name": "ElevenLabs MCP (hosted)",
+      "operations": [
+        "audio",
+        "presenter",
+        "generate-footage"
+      ],
+      "makes": [
+        "narration",
+        "dubbing",
+        "music",
+        "sound-effects",
+        "lip-sync",
+        "transcript",
+        "image-to-video"
+      ],
+      "notFor": [
+        "long-form-footage"
+      ],
+      "howFromClaude": "Add ElevenLabs from the Claude connectors directory and sign in with OAuth. No server to run.",
+      "access": "ElevenLabs account.",
+      "cost": "ElevenLabs plan credits.",
+      "exactText": true,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://elevenlabs.io/blog/introducing-voice-music-image-and-video-generation-in-the-elevenlabs-mcp",
+      "notes": "The audio layer for every other route: voiceover, translated dubs that keep the speaker's voice, music and effects. The older local repo elevenlabs/elevenlabs-mcp is archived; use the hosted connector."
+    },
+    {
+      "id": "descript-mcp",
+      "family": "connector",
+      "name": "Descript MCP and API",
+      "operations": [
+        "edit",
+        "audio"
+      ],
+      "makes": [
+        "transcript-edit",
+        "filler-word-removal",
+        "studio-sound",
+        "captions",
+        "clips",
+        "translation-dub",
+        "rough-cut"
+      ],
+      "notFor": [
+        "new-footage"
+      ],
+      "howFromClaude": "Connect the Descript MCP and ask for imports and edits. Exports of media files are manual in Descript for now.",
+      "access": "Any paid Descript plan.",
+      "cost": "Draws on the plan's AI credits and media minutes.",
+      "exactText": true,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://www.descript.com/api",
+      "notes": "The route when the edit is about what people said. The API exports transcripts, timelines and share links, not media files."
+    },
+    {
+      "id": "openart-mcp",
+      "family": "connector",
+      "name": "OpenArt MCP",
+      "operations": [
+        "generate-footage"
+      ],
+      "makes": [
+        "image-to-video",
+        "short-clip",
+        "style-consistent-series"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Connect OpenArt, list models with their cost, upload references through the picker, then generate.",
+      "access": "OpenArt account.",
+      "cost": "OpenArt credits; generations you cannot afford are refused.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://openart.ai",
+      "notes": "Useful when the job starts from a still you already like."
+    },
+    {
+      "id": "vidiq-mcp",
+      "family": "connector",
+      "name": "vidIQ MCP",
+      "operations": [
+        "generate-footage",
+        "edit",
+        "audio",
+        "publish"
+      ],
+      "makes": [
+        "clips-from-long-video",
+        "b-roll",
+        "voiceover",
+        "music",
+        "motion-graphics",
+        "thumbnail",
+        "youtube-upload"
+      ],
+      "notFor": [
+        "long-form-cinematic"
+      ],
+      "howFromClaude": "Connect vidIQ. Its tools cover research (outliers, keywords), generation (video, b-roll, clips, voiceover, music) and publishing (YouTube upload, Instagram reels).",
+      "access": "vidIQ account; a YouTube or Instagram connection for publishing.",
+      "cost": "vidIQ plan and balance.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://vidiq.com",
+      "notes": "The one connector here that covers research, generation and upload. Every upload or publish is a human approval."
+    },
+    {
+      "id": "canva-mcp",
+      "family": "connector",
+      "name": "Canva MCP",
+      "operations": [
+        "compose"
+      ],
+      "makes": [
+        "branded-social-video",
+        "resize-to-formats",
+        "template-video"
+      ],
+      "notFor": [
+        "realistic-footage"
+      ],
+      "howFromClaude": "Import a Claude Motion animation by URL, apply a brand kit, resize to each format, export.",
+      "access": "Canva account.",
+      "cost": "Canva plan.",
+      "exactText": true,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://www.canva.com",
+      "notes": "A last step when a brand kit and many aspect ratios matter more than custom motion."
+    },
+    {
+      "id": "figma-mcp-motion",
+      "family": "connector",
+      "name": "Figma MCP (motion and video export)",
+      "operations": [
+        "motion-graphics"
+      ],
+      "makes": [
+        "ui-motion",
+        "prototype-video",
+        "design-system-animation"
+      ],
+      "notFor": [
+        "realistic-footage"
+      ],
+      "howFromClaude": "Read motion context from a Figma file, author motion with Figma's motion skill, export video.",
+      "access": "Figma account with the MCP server enabled. Motion and export may need a paid seat; check Figma's plan page.",
+      "cost": "Figma plan.",
+      "exactText": true,
+      "reproducible": true,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://help.figma.com/hc/en-us/articles/32132100833559",
+      "notes": "The guide documents the MCP server; motion authoring and video export are inferred from the server's tool list (get_motion_context, export_video) seen on 2026-10-20, not from a Figma help page."
+    },
+    {
+      "id": "runway-mcp",
+      "family": "connector",
+      "name": "Runway MCP plugin",
+      "operations": [
+        "generate-footage",
+        "edit"
+      ],
+      "makes": [
+        "realistic-footage",
+        "video-to-video",
+        "reference-consistent-shots"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Install the plugin from runwayml/runway-mcp-plugin and add a Runway API key.",
+      "access": "Runway API key.",
+      "cost": "Runway credits.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "community",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/runwayml/runway-mcp-plugin",
+      "notes": "Published under the runwayml organisation, but young. Read its README before relying on it."
+    },
+    {
+      "id": "comfyui-mcp",
+      "family": "connector",
+      "name": "ComfyUI MCP",
+      "operations": [
+        "generate-footage",
+        "edit"
+      ],
+      "makes": [
+        "open-model-video",
+        "custom-workflow",
+        "lip-sync",
+        "upscale"
+      ],
+      "notFor": [
+        "no-gpu-setups"
+      ],
+      "howFromClaude": "Run ComfyUI, connect an MCP server such as artokun/comfyui-mcp, and let Claude queue workflows.",
+      "access": "A ComfyUI instance on a capable GPU.",
+      "cost": "Your GPU or GPU rental.",
+      "exactText": false,
+      "reproducible": true,
+      "status": "community",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/artokun/comfyui-mcp",
+      "notes": "Brings the local family into chat. Alternative: ATH-MaaS/Pixelle-MCP."
+    },
+    {
+      "id": "gemini-omni-api",
+      "family": "api",
+      "name": "Gemini Omni Flash via the Gemini API",
+      "operations": [
+        "generate-footage",
+        "audio"
+      ],
+      "makes": [
+        "realistic-footage",
+        "native-audio",
+        "cinematic-shot"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Claude Code calls the Interactions API (client.interactions.create, model gemini-omni-1.1-flash). Output arrives inline as base64 by default; for files over 4 MB request delivery 'uri', then poll files.get until state is ACTIVE and download.",
+      "access": "Google AI Studio key on the paid tier.",
+      "cost": "About $0.10 per second of 720p output; 1080p and 4K bill higher. Google's pricing page, read 2026-10-20.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://ai.google.dev/gemini-api/docs/omni",
+      "notes": "Google's recommended successor to Veo 3.1 on the Gemini API. 360p to 4K (1080p and 4K are upscaled), 16:9 or 9:16; extensions add 3 to 10 s up to 40 s total. gemini-omni-flash-preview shuts down on 2026-10-22. Price: ai.google.dev/gemini-api/docs/pricing."
+    },
+    {
+      "id": "veo-3-1",
+      "family": "api",
+      "name": "Veo 3.1",
+      "operations": [
+        "generate-footage",
+        "audio"
+      ],
+      "makes": [
+        "realistic-footage",
+        "native-audio",
+        "cinematic-shot"
+      ],
+      "notFor": [
+        "exact-on-screen-text",
+        "new-gemini-api-integrations"
+      ],
+      "howFromClaude": "Do not start a new Gemini API integration on Veo 3.1. Use gemini-omni-api, or the GA Veo models on Google's Gemini Enterprise Agent Platform.",
+      "access": "Gemini API IDs veo-3.1-generate-preview, veo-3.1-fast-generate-preview and veo-3.1-lite-generate-preview shut down on 2026-10-22.",
+      "cost": "Until shutdown: $0.40/s at 720p and 1080p, $0.60/s at 4K; Fast $0.10 to $0.30/s; Lite $0.05 to $0.08/s.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "retiring",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "notes": "Listed because most Veo tutorials online still use these IDs. Google's Veo 3.1 prompting guide still teaches the shot structure well."
+    },
+    {
+      "id": "grok-imagine-api",
+      "family": "api",
+      "name": "Grok Imagine video (xAI API)",
+      "operations": [
+        "generate-footage",
+        "edit"
+      ],
+      "makes": [
+        "text-to-video",
+        "image-to-video",
+        "video-edit",
+        "video-extend"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Claude Code calls the xAI API with grok-imagine-video-1.5 (native 1080p) or grok-imagine-video (720p, supports edit and extend).",
+      "access": "xAI API key.",
+      "cost": "Not listed on the capability page; see xAI's models page.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://docs.x.ai/developers/model-capabilities/video/overview",
+      "notes": "Clips run 1 to 15 seconds. Only the 720p model edits a source clip (up to 8.7 s) or extends one by 2 to 10 s."
+    },
+    {
+      "id": "other-model-apis",
+      "family": "api",
+      "name": "Kling, Seedance, Runway and Luma APIs (pointer)",
+      "operations": [
+        "generate-footage"
+      ],
+      "makes": [
+        "realistic-footage",
+        "image-to-video",
+        "motion-heavy-shot",
+        "multi-reference"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Pick the model in the comparison list below, then have Claude Code write the client from that provider's API docs.",
+      "access": "An account and key per provider, or one aggregator key.",
+      "cost": "Per second or per clip, changing monthly.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "third-party",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/Anil-matcha/awesome-ai-video-models",
+      "notes": "Not yet split into one row per provider. Anil-matcha/awesome-ai-video-models keeps the priced comparison; it is maintained by an aggregator vendor."
+    },
+    {
+      "id": "sora",
+      "family": "api",
+      "name": "Sora (OpenAI)",
+      "operations": [],
+      "makes": [],
+      "notFor": [
+        "everything"
+      ],
+      "howFromClaude": "Do not build on it.",
+      "access": "None. The app closed on 2026-04-26 and the Videos API and Sora 2 endpoints were retired on 2026-09-24.",
+      "cost": "n/a",
+      "exactText": false,
+      "reproducible": false,
+      "status": "dead",
+      "evidence": "third-party",
+      "checkedOn": "2026-10-20",
+      "url": "https://techcrunch.com/2026/03/29/soras-shutdown-could-be-a-reality-check-moment-for-ai-video/",
+      "notes": "Listed so nobody follows an old Sora tutorial."
+    },
+    {
+      "id": "gemini-app",
+      "family": "app",
+      "name": "Gemini app video",
+      "operations": [
+        "generate-footage",
+        "edit"
+      ],
+      "makes": [
+        "realistic-footage",
+        "conversational-edit"
+      ],
+      "notFor": [
+        "exact-on-screen-text",
+        "batch-production"
+      ],
+      "howFromClaude": "Claude writes the shot brief; paste it into the Gemini app.",
+      "access": "Personal accounts need a Google AI plan; Workspace accounts need a qualifying licence; not for users under 18. Uploading video for edits is unavailable in the EEA, Switzerland, the UK and some US states.",
+      "cost": "Included in the Google AI plan.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://support.google.com/gemini/answer/16126339",
+      "notes": "Runs Gemini Omni. The fallback when you have no connector, API key or GPU."
+    },
+    {
+      "id": "google-flow",
+      "family": "app",
+      "name": "Google Flow",
+      "operations": [
+        "generate-footage"
+      ],
+      "makes": [
+        "cinematic-shot",
+        "multi-shot-scene"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Claude writes the shot list; build the scene in Flow.",
+      "access": "Google account with a qualifying Google AI plan; check Flow's page.",
+      "cost": "Plan credits.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://flow.google.com/",
+      "notes": "Google's filmmaking workspace. The public page shows little beyond a sign-in, so plan details are unconfirmed."
+    },
+    {
+      "id": "luma-dream-machine",
+      "family": "app",
+      "name": "Luma Dream Machine (Ray3.14)",
+      "operations": [
+        "generate-footage",
+        "edit"
+      ],
+      "makes": [
+        "text-to-video",
+        "image-to-video",
+        "video-to-video",
+        "modify-video"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Claude writes the brief; run it in Dream Machine. A community MCP exists (JochenYang/luma-mcp) but is unofficial.",
+      "access": "Luma account.",
+      "cost": "Luma plan.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://lumalabs.ai/news/ray3_14",
+      "notes": "Native 1080p; Modify Video handles clips up to 18 seconds. Ray3.14 does not support character references."
+    },
+    {
+      "id": "runway-app",
+      "family": "app",
+      "name": "Runway app",
+      "operations": [
+        "generate-footage",
+        "edit"
+      ],
+      "makes": [
+        "realistic-footage",
+        "video-to-video",
+        "reference-consistent-shots"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Claude writes the brief and the reference plan; run it in Runway.",
+      "access": "Runway account.",
+      "cost": "Runway plan credits.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://runwayml.com/",
+      "notes": "Same models as the Runway MCP route, with the app's editing controls."
+    },
+    {
+      "id": "midjourney-video",
+      "family": "app",
+      "name": "Midjourney video",
+      "operations": [
+        "generate-footage"
+      ],
+      "makes": [
+        "image-to-video",
+        "stylised-loop"
+      ],
+      "notFor": [
+        "exact-on-screen-text",
+        "api-automation"
+      ],
+      "howFromClaude": "Claude writes the image prompt and motion notes; animate the image in Midjourney.",
+      "access": "Midjourney subscription.",
+      "cost": "Midjourney plan.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://docs.midjourney.com/hc/en-us/articles/37460773864589-Video",
+      "notes": "Animates Midjourney images. Its docs page returned 403 to our checker, so details are unconfirmed."
+    },
+    {
+      "id": "pika",
+      "family": "app",
+      "name": "Pika",
+      "operations": [
+        "generate-footage"
+      ],
+      "makes": [
+        "short-clip",
+        "effects"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Claude writes the brief; run it in Pika.",
+      "access": "Pika account.",
+      "cost": "Pika plan.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://pika.art/",
+      "notes": "Creator-facing generator focused on short clips and effects."
+    },
+    {
+      "id": "ltx-studio",
+      "family": "app",
+      "name": "LTX Studio",
+      "operations": [
+        "generate-footage",
+        "compose"
+      ],
+      "makes": [
+        "storyboard",
+        "multi-shot-scene",
+        "pitch-video"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Claude writes the script and shot list; build the storyboard in LTX Studio.",
+      "access": "LTX Studio account.",
+      "cost": "LTX Studio plan.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://ltx.io/studio",
+      "notes": "A production workspace, separate from running the open LTX-Video weights yourself."
+    },
+    {
+      "id": "capcut-captions",
+      "family": "app",
+      "name": "CapCut and Captions",
+      "operations": [
+        "edit",
+        "audio",
+        "presenter"
+      ],
+      "makes": [
+        "captions",
+        "short-form-edit",
+        "narration",
+        "talking-head-finish"
+      ],
+      "notFor": [
+        "agent-driven-batch"
+      ],
+      "howFromClaude": "Claude writes the cut list, captions and narration script; finish the edit in the app.",
+      "access": "CapCut or Captions account.",
+      "cost": "Each app's plan.",
+      "exactText": true,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "unverified",
+      "checkedOn": "2026-10-20",
+      "url": "https://captions.ai/",
+      "notes": "Where most short-form creators finish today. CapCut: capcut.com. No Claude integration is established for either."
+    },
+    {
+      "id": "open-weight-models",
+      "family": "local",
+      "name": "Wan 2.2, HunyuanVideo, LTX-Video, CogVideoX, Mochi",
+      "operations": [
+        "generate-footage"
+      ],
+      "makes": [
+        "realistic-footage",
+        "image-to-video",
+        "custom-fine-tune"
+      ],
+      "notFor": [
+        "laptops-without-a-discrete-gpu"
+      ],
+      "howFromClaude": "Claude Code installs the model or a ComfyUI workflow on a GPU machine and scripts batches. FastVideo and DiffSynth-Studio speed up inference.",
+      "access": "Open weights, but code licences and weight licences differ. Read each checkpoint's model card: HunyuanVideo, LTX-Video and CogVideoX ship weight licences of their own, and CogVideoX-5B asks commercial users to register.",
+      "cost": "GPU hardware or rental.",
+      "exactText": false,
+      "reproducible": true,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/Wan-Video/Wan2.2",
+      "notes": "The realistic-footage route with fixed seeds and no per-second bill. Reruns match only with the same checkpoint, settings and hardware."
+    },
+    {
+      "id": "faceless-pipelines",
+      "family": "pipeline",
+      "name": "MoneyPrinterTurbo, explainroo, onetake",
+      "operations": [
+        "generate-footage",
+        "compose",
+        "audio"
+      ],
+      "makes": [
+        "faceless-short",
+        "explainer-film",
+        "batch-social"
+      ],
+      "notFor": [
+        "brand-flagship-work"
+      ],
+      "howFromClaude": "Clone the kit, add your keys, let Claude Code drive its CLI or adapt the templates.",
+      "access": "Open source; the models they call bill separately.",
+      "cost": "Whatever LLM, voice and footage providers you plug in.",
+      "exactText": true,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "third-party",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/harry0703/MoneyPrinterTurbo",
+      "notes": "In zhuyansen/awesome-claude-video-skills' 16-skill test, explainroo finished a film with sound fastest (about two minutes) and onetake held one idea across the cut. Fast output tends toward the default look."
+    },
+    {
+      "id": "postiz",
+      "family": "distribution",
+      "name": "Postiz (self-hosted scheduler with MCP)",
+      "operations": [
+        "publish"
+      ],
+      "makes": [
+        "scheduled-post"
+      ],
+      "notFor": [
+        "generation"
+      ],
+      "howFromClaude": "Upload the file through the Postiz MCP and stage the post; a human approves before it schedules.",
+      "access": "Self-hosted Postiz with each platform's OAuth connected.",
+      "cost": "Hosting only.",
+      "exactText": true,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-10-20",
+      "url": "https://github.com/gitroomhq/postiz-app",
+      "notes": "Posts through each platform's official API rather than browser automation."
+    }
+  ]
+}
