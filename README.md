@@ -3,7 +3,7 @@
 The ways to make video with Claude, mapped: native features, MCP connectors, model APIs, apps, open-weight models and full pipelines. Each route says what it costs, what plan it needs, what it can't do, and how sure we are.
 
 <!-- generated:counts -->
-31 usable routes across 7 families (20 confirmed on the provider's own page), 22 linked resources, verified 2026-10-20.
+32 usable routes across 7 families (21 confirmed on the provider's own page), 22 linked resources, verified 2026-10-20.
 <!-- /generated:counts -->
 
 Other lists catalogue tools. This one answers **"I need this video, which route do I take?"** and links to the deeper list for that route. Agents read the same answer from [`data/routes.json`](data/routes.json) or through the [`video-router`](skills/video-router/SKILL.md) skill.
@@ -67,6 +67,7 @@ Claude calls a hosted service through an MCP connector. The service generates or
 
 | Route | Makes | Exact text | Access | Status | Evidence |
 |---|---|---|---|---|---|
+| [Kling AI official MCP](https://kling.ai/app/mcp/guide) | realistic-footage, cinematic-shot, image-to-video | no | Kling account in the matching region; account access and available models vary. | live | documented |
 | [Higgsfield MCP](https://higgsfield.ai/blog/Generate-AI-Videos-From-Claude-with-Higgsfield-MCP) | realistic-footage, cinematic-shot, image-to-video, ad-creative | no | Higgsfield account. Higgsfield's own post lists Veo 3.1, Kling 3.0, Seedance 2.0, Wan and MiniMax Hailuo, up to 4K and about 15 seconds per clip. | live | documented |
 | [HeyGen MCP (avatars) and HyperFrames hosted MCP](https://www.heygen.com/blog/generate-ai-videos-with-claude) | talking-head, avatar-explainer, hosted-html-video | yes | HeyGen account; check the current plan limits on HeyGen's pricing page. | live | documented |
 | [ElevenLabs MCP (hosted)](https://elevenlabs.io/blog/introducing-voice-music-image-and-video-generation-in-the-elevenlabs-mcp) | narration, dubbing, music, sound-effects, lip-sync, transcript, image-to-video | yes | ElevenLabs account. | live | documented |

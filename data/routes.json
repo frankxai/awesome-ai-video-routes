@@ -211,6 +211,32 @@
       "notes": "Real UI earns more trust than generated UI. Record first, then add titles in code."
     },
     {
+      "id": "kling-ai-mcp",
+      "family": "connector",
+      "name": "Kling AI official MCP",
+      "operations": [
+        "generate-footage"
+      ],
+      "makes": [
+        "realistic-footage",
+        "cinematic-shot",
+        "image-to-video"
+      ],
+      "notFor": [
+        "exact-on-screen-text"
+      ],
+      "howFromClaude": "Add the official regional remote MCP connector, connect with OAuth, and confirm the requested settings before paid generation.",
+      "access": "Kling account in the matching region; account access and available models vary.",
+      "cost": "Paid personal-workspace credits; free off-peak generation and bonus credits are not available through MCP, according to Kling's guide.",
+      "exactText": false,
+      "reproducible": false,
+      "status": "live",
+      "evidence": "documented",
+      "checkedOn": "2026-11-14",
+      "url": "https://kling.ai/app/mcp/guide",
+      "notes": "Official plugin endpoints are https://kling.ai/mcp/plugin (Global) and https://klingai.com/mcp/plugin (China). Regional accounts, credits and tasks are separate. This entry describes the hosted service; public plugin repositories contain clients and Skills, not the server source. No generation was tested for this submission."
+    },
+    {
       "id": "higgsfield-mcp",
       "family": "connector",
       "name": "Higgsfield MCP",
